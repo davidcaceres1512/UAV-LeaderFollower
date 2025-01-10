@@ -4,6 +4,8 @@ Este proyecto es presentado para el curso **Sistemas de Percepción en Robótica
 
 Simula un sistema de control basado en el esquema líder-seguidor para drones utilizando **ROS 2**, **Ignition Gazebo** y **Rviz**. El sistema incluye nodos que permiten generar trayectorias, coordinar el movimiento entre los drones y visualizar la simulación en **Rviz**.
 
+> **Nueva Feature**: Ahora este proyecto incluye la posibilidad de controlarlo mediante una aplicación móvil Flutter, desarrollada en mi otro repositorio [IMUDataAppPublisher](https://github.com/davidcaceres1512/IMUDataAppPublisher/tree/feature/takeoff_and_land). Esta aplicación permite enviar datos de IMU y comandos de control como despegue y aterrizaje directamente a los drones en tiempo real.
+
 ---
 
 ## **Índice**
@@ -13,8 +15,10 @@ Simula un sistema de control basado en el esquema líder-seguidor para drones ut
 3. [Nodos, Publicadores y Subscriptores](#nodos-publicadores-y-subscriptores)
 4. [Guía de Instalación](#guía-de-instalación)
 5. [Ejemplo de Ejecución](#ejemplo-de-ejecución)
-6. [Referencias](#referencias)
+6. [Nueva Feature: Control con Aplicación Móvil](#nueva-feature-control-con-aplicación-móvil)
+7. [Referencias](#referencias)
 
+---
 ---
 
 ## **Descripción del Proyecto**
@@ -140,6 +144,32 @@ El proyecto incluye nodos en **C++ y Python** que controlan individualmente cada
        /r1/gazebo/command/twist@geometry_msgs/msg/Twist@ignition.msgs.Twist \
        /model/r1/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry
      ```
+
+---
+## **Nueva Feature: Control con Aplicación Móvil**
+
+### **Descripción**
+El proyecto ahora puede ser controlado a través de una aplicación móvil desarrollada en Flutter, disponible en mi otro repositorio [IMUDataAppPublisher](https://github.com/davidcaceres1512/IMUDataAppPublisher/tree/feature/takeoff_and_land). Esta app amplía las capacidades del sistema, permitiendo:
+
+1. **Publicación de datos del giroscopio**:
+   - La app publica datos de un IMU (Unidad de Medición Inercial) en tiempo real al tópico `/iphone/gyro`.
+   
+2. **Envío de comandos al dron**:
+   - Comandos como `TAKEOFF_START`, `TAKEOFF_STOP` y `LAND` son enviados al tópico `/drone/commands`.
+
+3. **Interacción directa con ROS 2**:
+   - Utiliza WebSockets para conectarse al servidor `rosbridge_server`.
+
+### **Requisitos para la Integración**
+1. Tener configurado `rosbridge_server` en el entorno ROS 2.
+2. Asegurar que los puertos necesarios estén abiertos en la red local.
+3. Utilizar la misma red local para la aplicación móvil y el servidor ROS 2.
+
+### **Pruebas y Screenshots**
+#### **Capturas de Pantalla**
+- Publicación de datos del giroscopio.
+- Envío de comandos de despegue y aterrizaje.
+- Conexión establecida entre la aplicación y el servidor ROS 2.
 
 ---
 
