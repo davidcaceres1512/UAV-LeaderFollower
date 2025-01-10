@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="r2" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="package_name" value="my_uavs"/>
+  <xacro:property name="length" value="0.005"/>
+  <xacro:property name="radius" value="0.1"/>
+
+  <link name="r2/base_footprint">
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://${package_name}/models/r2/meshes/x3.dae" scale="1 1 1"/>
+        <!-- <box size="0.47 0.47 0.15"/> -->
+      </geometry>
+    </visual>
+
+    <visual>
+      <origin xyz="0.13 -0.22 0.093" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${length}" radius="${radius}"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.13 0.2 0.093" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${length}" radius="${radius}"/>
+      </geometry>
+    </visual>
+
+    <visual>
+      <origin xyz="0.13 0.22 0.093" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${length}" radius="${radius}"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.13 -0.2 0.093" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${length}" radius="${radius}"/>
+      </geometry>
+    </visual>
+
+  </link>
+  
+</robot>
+
